@@ -10,6 +10,12 @@ public class FamilyService {
 	private Repository repository;
 	private EmailNotifier emailNotifier;
 	
+	public FamilyService(Repository repository, EmailNotifier emailNotifier) {
+		super();
+		this.repository = repository;
+		this.emailNotifier = emailNotifier;
+	}
+
 	/**
 	 * New family will be created in repository. Appropriate notification will be sent to email address.
 	 * @param mother
