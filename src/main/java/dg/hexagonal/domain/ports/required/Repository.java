@@ -32,4 +32,12 @@ public interface Repository {
 			FamilyMember... kids);
 
 	public Family getFamilyById(int familyId);
+
+	/* FamilyParticipant */
+	
+	public Event familyGoOnEvent(int eventId, int familyId);
+
+	public Event familyIsInterestedInEvent(int eventId, int familyId);
+
+	public Event familyResignFromEvent(int eventId, int familyId);
 }
