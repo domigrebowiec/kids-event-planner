@@ -3,14 +3,14 @@ package dg.hexagonal.domain.logic;
 import dg.hexagonal.domain.Family;
 import dg.hexagonal.domain.FamilyMember;
 import dg.hexagonal.domain.ports.required.EmailNotifier;
-import dg.hexagonal.domain.ports.required.Repository;
+import dg.hexagonal.domain.ports.required.FamilyRepository;
 
 public class FamilyService {
 
-	private Repository repository;
+	private FamilyRepository repository;
 	private EmailNotifier emailNotifier;
 	
-	public FamilyService(Repository repository, EmailNotifier emailNotifier) {
+	public FamilyService(FamilyRepository repository, EmailNotifier emailNotifier) {
 		super();
 		this.repository = repository;
 		this.emailNotifier = emailNotifier;
