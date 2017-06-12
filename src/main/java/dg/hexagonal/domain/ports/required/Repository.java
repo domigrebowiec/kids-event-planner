@@ -14,13 +14,15 @@ public interface Repository {
 	
 	public void addEvent(Event event);
 
-	public Event updateEventById(int eventId, String name, DateTime date, EventType type, EventPlace place);
+	public Event updateEventById(Long eventId, String name, DateTime date, EventType type, EventPlace place);
 
-	public Event getEventById(int eventId);
+	public Event getEventById(Long eventId);
+	
+	public Event getEventByName(String string);
 
-	public Event abortEvent(int eventId);
+	public Event abortEvent(Long eventId);
 
-	public Event deleteEvent(int eventId);
+	public Event deleteEvent(Long eventId);
 
 	/* Family */
 	
@@ -35,9 +37,11 @@ public interface Repository {
 
 	/* FamilyParticipant */
 	
-	public Event familyGoOnEvent(int eventId, int familyId);
+	public Event familyGoOnEvent(Long eventId, int familyId);
 
-	public Event familyIsInterestedInEvent(int eventId, int familyId);
+	public Event familyIsInterestedInEvent(Long eventId, int familyId);
 
-	public Event familyResignFromEvent(int eventId, int familyId);
+	public Event familyResignFromEvent(Long eventId, int familyId);
+
+	
 }

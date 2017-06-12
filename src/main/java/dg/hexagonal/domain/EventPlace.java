@@ -24,5 +24,27 @@ public class EventPlace {
 	public String getName() {
 		return name;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		System.out.println("Comparing EventPlace");
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EventPlace other = (EventPlace) obj;
+		if (coordX != other.coordX)
+			return false;
+		if (coordY != other.coordY)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
 		
 }

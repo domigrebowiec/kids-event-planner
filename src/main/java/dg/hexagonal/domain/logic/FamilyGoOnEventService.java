@@ -22,7 +22,7 @@ public class FamilyGoOnEventService {
 	 * @param eventId
 	 * @param familyId
 	 */
-	public void familyGoOnEvent(int eventId, int familyId) {
+	public void familyGoOnEvent(Long eventId, int familyId) {
 		
 		Family family = repository.getFamilyById(familyId);
 		Event event = repository.familyGoOnEvent(eventId, familyId);
@@ -35,7 +35,7 @@ public class FamilyGoOnEventService {
 	 * @param eventId
 	 * @param familyId
 	 */
-	public void familyIsInterestedInEvent(int eventId, int familyId) {
+	public void familyIsInterestedInEvent(Long eventId, int familyId) {
 		
 		Family family = repository.getFamilyById(familyId);
 		Event event = repository.familyIsInterestedInEvent(eventId, familyId);
@@ -48,7 +48,7 @@ public class FamilyGoOnEventService {
 	 * @param eventId
 	 * @param familyId
 	 */
-	public void familyResignFromEvent(int eventId, int familyId) {
+	public void familyResignFromEvent(Long eventId, int familyId) {
 		
 		Family family = repository.getFamilyById(familyId);
 		Event event = repository.familyResignFromEvent(eventId, familyId);

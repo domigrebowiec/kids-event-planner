@@ -4,7 +4,7 @@ import org.joda.time.DateTime;
 
 public class Event {
 
-	private int eventId;
+	private Long eventId;
 	private String name;
 	private DateTime date;	
 	private EventType type;
@@ -17,8 +17,15 @@ public class Event {
 		this.type = type;
 		this.place = place;
 	}
-
-	public int getEventId() {
+	
+	public void setEventId(Long eventId) {
+		if (eventId != null) { // do not assign eventId if already assigned
+			return;	
+		}		
+		this.eventId = eventId;
+	}
+	
+	public Long getEventId() {
 		return eventId;
 	}
 

@@ -42,7 +42,7 @@ public class EventService {
 	 * @param type
 	 * @param place
 	 */
-	public void updateEvent(int eventId, String name, DateTime date, EventType type, EventPlace place) {
+	public void updateEvent(Long eventId, String name, DateTime date, EventType type, EventPlace place) {
 		
 		Event oldEvent = repository.getEventById(eventId);
 		Event updatedEvent = repository.updateEventById(eventId, name, date, type, place);
@@ -53,7 +53,7 @@ public class EventService {
 	 * Event with given eventId will be aborted. It will not be deleted from repository.
 	 * @param eventId
 	 */
-	public void abortEvent(int eventId) {
+	public void abortEvent(Long eventId) {
 		
 		Event event = repository.abortEvent(eventId);
 		notifier.notifyEventAborted(event);
@@ -63,7 +63,7 @@ public class EventService {
 	 * Event with given eventId will be deleted from repository.
 	 * @param eventId
 	 */
-	public void deleteEvent(int eventId) {
+	public void deleteEvent(Long eventId) {
 		
 		Event event = repository.deleteEvent(eventId);
 		notifier.notifyEventDeleted(event);
