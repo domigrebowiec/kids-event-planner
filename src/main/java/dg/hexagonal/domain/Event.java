@@ -4,11 +4,11 @@ import org.joda.time.DateTime;
 
 public class Event {
 
-	protected int eventId;
-	protected String name;
-	protected DateTime date;	
-	protected EventType type;
-	protected EventPlace place;
+	private int eventId;
+	private String name;
+	private DateTime date;	
+	private EventType type;
+	private EventPlace place;
 	
 	public Event(String name, DateTime date, EventType type, EventPlace place) {
 		super();
@@ -17,5 +17,26 @@ public class Event {
 		this.type = type;
 		this.place = place;
 	}
+
+	public int getEventId() {
+		return eventId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public DateTime getDate() {
+		return date;
+	}
+
+	public EventType getType() {
+		return type;
+	}
+
+	public EventPlace getPlace() {
+		return place;
+	}
+	
 	
 }

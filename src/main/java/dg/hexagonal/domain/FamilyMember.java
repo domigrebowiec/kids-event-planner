@@ -4,10 +4,23 @@ import org.joda.time.DateTime;
 
 public class FamilyMember {
 
-	protected String firstName;
-	protected String lastName;
-	protected Family family;
-	protected DateTime dateOfBirth;
-	protected enum sex {FEMALE, MALE};
+	private String firstName;
+	private String lastName;
+	private Family family;
+	private DateTime dateOfBirth;
+	private enum sex {FEMALE, MALE};
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public Family getFamily() {
+		return family;
+	}
+	public DateTime getDateOfBirth() {
+		return dateOfBirth;
+	}
 	
 }
