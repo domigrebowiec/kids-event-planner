@@ -6,18 +6,6 @@ import dg.hexagonal.domain.FamilyMember;
 
 public interface Repository {
 
-	/* Event */
-	
-	public void addEvent(Event event);
-
-	public Event updateEventById(Long eventId, Event event);
-
-	public Event getEventById(Long eventId);
-	
-	public Event getEventByName(String string);
-
-	public Event deleteEvent(Long eventId);
-
 	/* Family */
 	
 	public void addFamily(Family family);

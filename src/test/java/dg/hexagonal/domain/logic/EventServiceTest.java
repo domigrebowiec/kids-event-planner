@@ -15,19 +15,19 @@ import dg.hexagonal.adapters.required.TestRepository;
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.EventPlace;
 import dg.hexagonal.domain.EventType;
-import dg.hexagonal.domain.ports.required.Repository;
+import dg.hexagonal.domain.ports.required.EventRepository;
 
 public class EventServiceTest {
 	
-	private Repository repository;
+	private EventRepository eventRepo;
 	private StdioNotifier notifier;
 	private EventService eventService;
 	
 	@Before
 	public void setup() {
-		repository = new TestRepository();
+		eventRepo = new TestRepository();
 		notifier = new StdioNotifier();
-		eventService = new EventService(repository, notifier);
+		eventService = new EventService(eventRepo, notifier);
 	}
 	
 	@After
@@ -45,7 +45,7 @@ public class EventServiceTest {
 		eventService.createEvent("test event", new DateTime(), EventType.INDOOR, givenPlace);
 		
 		// then
-		Event event = repository.getEventByName("test event");
+		Event event = eventRepo.getEventByName("test event");
 		assertNotNull(event);
 		assertTrue(event.getPlace().equals(givenPlace));
 		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_ADDED));
@@ -65,7 +65,7 @@ public class EventServiceTest {
 		eventService.updateEvent(1l, "test event", null, EventType.MOVIE, newPlace);
 		
 		// then
-		Event event = repository.getEventByName("test event");
+		Event event = eventRepo.getEventByName("test event");
 		assertNotNull(event);
 		assertTrue(event.getDate().equals(date));
 		assertTrue(event.getType().equals(EventType.MOVIE));
@@ -87,7 +87,7 @@ public class EventServiceTest {
 		eventService.updateEvent(1l, null, null, null, null);
 		
 		// then
-		Event event = repository.getEventByName("test event");
+		Event event = eventRepo.getEventByName("test event");
 		assertNotNull(event);
 		assertTrue(event.getDate().equals(date));
 		assertTrue(event.getType().equals(EventType.FAMILY));
@@ -113,7 +113,7 @@ public class EventServiceTest {
 		eventService.updateEvent(1l, "new event name", newDate, EventType.INDOOR, newPlace);
 		
 		// then
-		Event event = repository.getEventById(1l);
+		Event event = eventRepo.getEventById(1l);
 		assertNotNull(event);
 		assertTrue(event.getName().equals("new event name"));
 		assertTrue(event.getDate().equals(newDate));
@@ -135,7 +135,7 @@ public class EventServiceTest {
 		eventService.abortEvent(1l);
 		
 		// then
-		Event event = repository.getEventById(1l);
+		Event event = eventRepo.getEventById(1l);
 		assertNotNull(event);
 		assertTrue(event.isAborted());
 		
@@ -154,7 +154,7 @@ public class EventServiceTest {
 		eventService.deleteEvent(1l);
 		
 		// then
-		Event event = repository.getEventById(1l);
+		Event event = eventRepo.getEventById(1l);
 		assertNull(event);
 		
 		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_DELETED));

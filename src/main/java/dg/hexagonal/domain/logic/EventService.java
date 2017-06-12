@@ -5,17 +5,17 @@ import org.joda.time.DateTime;
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.EventPlace;
 import dg.hexagonal.domain.EventType;
+import dg.hexagonal.domain.ports.required.EventRepository;
 import dg.hexagonal.domain.ports.required.Notifier;
-import dg.hexagonal.domain.ports.required.Repository;
 
 public class EventService {
 
-	private Repository repository;
+	private EventRepository repository;
 	private Notifier notifier;
 	
-	public EventService(Repository repository, Notifier notifier) {
+	public EventService(EventRepository eventRepo, Notifier notifier) {
 		super();
-		this.repository = repository;
+		this.repository = eventRepo;
 		this.notifier = notifier;
 	}
 
