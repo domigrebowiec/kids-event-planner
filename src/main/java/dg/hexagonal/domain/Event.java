@@ -9,6 +9,7 @@ public class Event {
 	private DateTime date;	
 	private EventType type;
 	private EventPlace place;
+	private boolean aborted;
 	
 	public Event(String name, DateTime date, EventType type, EventPlace place) {
 		super();
@@ -16,6 +17,7 @@ public class Event {
 		this.date = date;
 		this.type = type;
 		this.place = place;
+		this.aborted = false;
 	}
 	
 	public void setEventId(Long eventId) {
@@ -44,6 +46,13 @@ public class Event {
 	public EventPlace getPlace() {
 		return place;
 	}
-	
+
+	public boolean isAborted() {
+		return aborted;
+	}
+
+	public void setAborted(boolean aborted) {
+		this.aborted = aborted;
+	}
 	
 }

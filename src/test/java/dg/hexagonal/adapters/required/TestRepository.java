@@ -3,11 +3,7 @@ package dg.hexagonal.adapters.required;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.joda.time.DateTime;
-
 import dg.hexagonal.domain.Event;
-import dg.hexagonal.domain.EventPlace;
-import dg.hexagonal.domain.EventType;
 import dg.hexagonal.domain.Family;
 import dg.hexagonal.domain.FamilyMember;
 import dg.hexagonal.domain.ports.required.Repository;
@@ -27,9 +23,8 @@ public class TestRepository implements Repository {
 		eventMap.put(id, event);
 	}
 
-	public Event updateEventById(Long eventId, String name, DateTime date, EventType type, EventPlace place) {
-		// TODO Auto-generated method stub
-		return null;
+	public Event updateEventById(Long eventId, Event event) {
+		return eventMap.put(eventId, event);
 	}
 
 	public Event getEventById(Long eventId) {
@@ -45,14 +40,8 @@ public class TestRepository implements Repository {
 		return null;
 	}
 
-	public Event abortEvent(Long eventId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public Event deleteEvent(Long eventId) {
-		// TODO Auto-generated method stub
-		return null;
+		return eventMap.remove(eventId);
 	}
 
 	public void addFamily(Family family) {

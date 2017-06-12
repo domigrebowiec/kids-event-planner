@@ -45,7 +45,14 @@ public class EventService {
 	public void updateEvent(Long eventId, String name, DateTime date, EventType type, EventPlace place) {
 		
 		Event oldEvent = repository.getEventById(eventId);
-		Event updatedEvent = repository.updateEventById(eventId, name, date, type, place);
+		
+		String uName = (name == null) ? oldEvent.getName() : name;
+		DateTime uDate = (date == null) ? oldEvent.getDate() : date;
+		EventType uType = (type == null) ? oldEvent.getType() : type;
+		EventPlace uPlace = (place == null) ? oldEvent.getPlace() : place;
+		Event updatedEvent = new Event(uName, uDate, uType, uPlace); 
+		
+		repository.updateEventById(eventId, updatedEvent);
 		notifier.notifyEventUpdated(oldEvent, updatedEvent);
 	}
 	
@@ -55,7 +62,9 @@ public class EventService {
 	 */
 	public void abortEvent(Long eventId) {
 		
-		Event event = repository.abortEvent(eventId);
+		Event event = repository.getEventById(eventId);
+		event.setAborted(true);
+		repository.updateEventById(eventId, event);
 		notifier.notifyEventAborted(event);
 	}
 	
