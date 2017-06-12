@@ -2,18 +2,18 @@ package dg.hexagonal.domain.logic;
 
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.Family;
-import dg.hexagonal.domain.ports.required.EmailNotifier;
+import dg.hexagonal.domain.ports.required.FamilyNotifier;
 import dg.hexagonal.domain.ports.required.FamilyRepository;
 
 public class FamilyGoOnEventService {
 
 	private FamilyRepository repository;
-	private EmailNotifier emailNotifier;
+	private FamilyNotifier notifier;
 	
-	public FamilyGoOnEventService(FamilyRepository repository, EmailNotifier emailNotifier) {
+	public FamilyGoOnEventService(FamilyRepository repository, FamilyNotifier notifier) {
 		super();
 		this.repository = repository;
-		this.emailNotifier = emailNotifier;
+		this.notifier = notifier;
 	}
 
 	/**
@@ -26,7 +26,7 @@ public class FamilyGoOnEventService {
 		
 		Family family = repository.getFamilyById(familyId);
 		Event event = repository.familyGoOnEvent(eventId, familyId);
-		emailNotifier.notifyFamilyGoOnEvent(event, family);
+		notifier.notifyFamilyGoOnEvent(event, family);
 	}
 	
 	/** 
@@ -39,7 +39,7 @@ public class FamilyGoOnEventService {
 		
 		Family family = repository.getFamilyById(familyId);
 		Event event = repository.familyIsInterestedInEvent(eventId, familyId);
-		emailNotifier.notifyFamilyIsInterestedInEvent(event, family);
+		notifier.notifyFamilyIsInterestedInEvent(event, family);
 	}
 	
 	/**
@@ -52,6 +52,6 @@ public class FamilyGoOnEventService {
 		
 		Family family = repository.getFamilyById(familyId);
 		Event event = repository.familyResignFromEvent(eventId, familyId);
-		emailNotifier.notifyFamilyResignFromEvent(event, family);
+		notifier.notifyFamilyResignFromEvent(event, family);
 	}
 }

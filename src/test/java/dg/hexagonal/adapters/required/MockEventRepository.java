@@ -6,11 +6,11 @@ import java.util.Map;
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.ports.required.EventRepository;
 
-public class TestRepository implements EventRepository {
+public class MockEventRepository implements EventRepository {
 
 	private Map<Long, Event> eventMap;
 		
-	public TestRepository() {
+	public MockEventRepository() {
 		eventMap = new HashMap<Long, Event>();
 	}
 

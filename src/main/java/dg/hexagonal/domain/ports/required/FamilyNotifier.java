@@ -4,7 +4,7 @@ import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.Family;
 import dg.hexagonal.domain.FamilyMember;
 
-public interface EmailNotifier {
+public interface FamilyNotifier {
 
 	void notifyNewFamily(Family family);
 

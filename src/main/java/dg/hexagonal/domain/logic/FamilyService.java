@@ -2,18 +2,18 @@ package dg.hexagonal.domain.logic;
 
 import dg.hexagonal.domain.Family;
 import dg.hexagonal.domain.FamilyMember;
-import dg.hexagonal.domain.ports.required.EmailNotifier;
+import dg.hexagonal.domain.ports.required.FamilyNotifier;
 import dg.hexagonal.domain.ports.required.FamilyRepository;
 
 public class FamilyService {
 
 	private FamilyRepository repository;
-	private EmailNotifier emailNotifier;
+	private FamilyNotifier notifier;
 	
-	public FamilyService(FamilyRepository repository, EmailNotifier emailNotifier) {
+	public FamilyService(FamilyRepository repository, FamilyNotifier notifier) {
 		super();
 		this.repository = repository;
-		this.emailNotifier = emailNotifier;
+		this.notifier = notifier;
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class FamilyService {
 		
 		Family family = new Family(mother, father, emailAddress, kids);
 		repository.addFamily(family);
-		emailNotifier.notifyNewFamily(family);
+		notifier.notifyNewFamily(family);
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class FamilyService {
 	public void addKidToFamily(int familyId, FamilyMember kid) {
 		
 		Family family = repository.addKidToFamily(familyId, kid);
-		emailNotifier.notifyAddNewKid(family, kid);
+		notifier.notifyAddNewKid(family, kid);
 	}
 	
 	/**
@@ -55,6 +55,6 @@ public class FamilyService {
 		
 		Family oldFamily = repository.getFamilyById(familyId);
 		Family updatedFamily = repository.updateFamily(familyId, mother, father, emailAddress, kids);
-		emailNotifier.notifyFamilyChanged(oldFamily, updatedFamily);
+		notifier.notifyFamilyChanged(oldFamily, updatedFamily);
 	}
 }

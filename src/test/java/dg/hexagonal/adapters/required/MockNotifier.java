@@ -6,11 +6,11 @@ import java.util.List;
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.ports.required.Notifier;
 
-public class StdioNotifier implements Notifier {
+public class MockNotifier implements Notifier {
 	
 	private List<NotificationType> notifications;
 	
-	public StdioNotifier() {
+	public MockNotifier() {
 		notifications = new ArrayList<NotificationType>();
 	}
 	
