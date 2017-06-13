@@ -6,7 +6,7 @@ public interface EventRepository {
 	
 	public void addEvent(Event event);
 
-	public Event updateEventById(Long eventId, Event event);
+	public Event updateEvent(Event event);
 
 	public Event getEventById(Long eventId);
 	

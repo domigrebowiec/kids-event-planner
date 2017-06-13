@@ -8,7 +8,14 @@ public class FamilyMember {
 	private String lastName;
 	private Family family;
 	private DateTime dateOfBirth;
-	private enum sex {FEMALE, MALE};
+	
+	public FamilyMember(String firstName, String lastName, DateTime dateOfBirth) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.family = null;
+		this.dateOfBirth = dateOfBirth;
+	}
 	
 	public String getFirstName() {
 		return firstName;
@@ -19,8 +26,55 @@ public class FamilyMember {
 	public Family getFamily() {
 		return family;
 	}
+	public void setFamily(Family family) {
+		this.family = family;
+	}
 	public DateTime getDateOfBirth() {
 		return dateOfBirth;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((family == null) ? 0 : family.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FamilyMember other = (FamilyMember) obj;
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
+				return false;
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
+			return false;
+		if (family == null) {
+			if (other.family != null)
+				return false;
+		} else if (!family.equals(other.family))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		return true;
+	}
+	
 	
 }

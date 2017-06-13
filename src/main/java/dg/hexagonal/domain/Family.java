@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Family {
 
-	private int familyId;
+	private Long familyId;
 	private FamilyMember mother;
 	private FamilyMember father;
 	private List<FamilyMember> kids;
 	private String emailAddress;
-	
+		
 	public Family(FamilyMember mother, FamilyMember father, String emailAddress, FamilyMember... kids) {
 		super();
 		this.mother = mother;
@@ -23,7 +23,14 @@ public class Family {
 		}		
 	}
 
-	public int getFamilyId() {
+	public void setFamilyId(Long familyId) {
+		if (this.familyId != null) { // do not assign familyId if already assigned
+			return;	
+		}	
+		this.familyId = familyId;
+	}
+
+	public Long getFamilyId() {
 		return familyId;
 	}
 
@@ -41,6 +48,55 @@ public class Family {
 
 	public String getEmailAddress() {
 		return emailAddress;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((emailAddress == null) ? 0 : emailAddress.hashCode());
+		result = prime * result + ((familyId == null) ? 0 : familyId.hashCode());
+		result = prime * result + ((father == null) ? 0 : father.hashCode());
+		result = prime * result + ((kids == null) ? 0 : kids.hashCode());
+		result = prime * result + ((mother == null) ? 0 : mother.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Family other = (Family) obj;
+		if (emailAddress == null) {
+			if (other.emailAddress != null)
+				return false;
+		} else if (!emailAddress.equals(other.emailAddress))
+			return false;
+		if (familyId == null) {
+			if (other.familyId != null)
+				return false;
+		} else if (!familyId.equals(other.familyId))
+			return false;
+		if (father == null) {
+			if (other.father != null)
+				return false;
+		} else if (!father.equals(other.father))
+			return false;
+		if (kids == null) {
+			if (other.kids != null)
+				return false;
+		} else if (!kids.equals(other.kids))
+			return false;
+		if (mother == null) {
+			if (other.mother != null)
+				return false;
+		} else if (!mother.equals(other.mother))
+			return false;
+		return true;
 	}	
 	
 }

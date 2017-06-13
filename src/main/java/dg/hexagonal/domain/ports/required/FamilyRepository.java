@@ -8,18 +8,17 @@ public interface FamilyRepository {
 
 	public void addFamily(Family family);
 
-	public Family addKidToFamily(int familyId, FamilyMember kid);
+	public Family addKidToFamily(Long familyId, FamilyMember kid);
 
-	public Family updateFamily(int familyId, FamilyMember mother, FamilyMember father, String emailAddress,
-			FamilyMember... kids);
+	public void updateFamily(Family family);
 
-	public Family getFamilyById(int familyId);
+	public Family getFamilyById(Long familyId);
 	
 	
 	///
-	public Event familyGoOnEvent(Long eventId, int familyId);
+	public Event familyGoOnEvent(Long eventId, Long familyId);
 
-	public Event familyIsInterestedInEvent(Long eventId, int familyId);
+	public Event familyIsInterestedInEvent(Long eventId, Long familyId);
 
-	public Event familyResignFromEvent(Long eventId, int familyId);
+	public Event familyResignFromEvent(Long eventId, Long familyId);
 }

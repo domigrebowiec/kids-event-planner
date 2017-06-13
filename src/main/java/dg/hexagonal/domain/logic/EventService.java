@@ -51,8 +51,9 @@ public class EventService {
 		EventType uType = (type == null) ? oldEvent.getType() : type;
 		EventPlace uPlace = (place == null) ? oldEvent.getPlace() : place;
 		Event updatedEvent = new Event(uName, uDate, uType, uPlace); 
+		updatedEvent.setEventId(eventId);
 		
-		repository.updateEventById(eventId, updatedEvent);
+		repository.updateEvent(updatedEvent);
 		notifier.notifyEventUpdated(oldEvent, updatedEvent);
 	}
 	
@@ -64,7 +65,7 @@ public class EventService {
 		
 		Event event = repository.getEventById(eventId);
 		event.setAborted(true);
-		repository.updateEventById(eventId, event);
+		repository.updateEvent(event);
 		notifier.notifyEventAborted(event);
 	}
 	

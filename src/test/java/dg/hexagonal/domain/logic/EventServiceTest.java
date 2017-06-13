@@ -9,9 +9,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import dg.hexagonal.adapters.required.NotificationType;
-import dg.hexagonal.adapters.required.StdioNotifier;
-import dg.hexagonal.adapters.required.TestRepository;
+import dg.hexagonal.adapters.required.MockNotificationType;
+import dg.hexagonal.adapters.required.MockNotifier;
+import dg.hexagonal.adapters.required.MockEventRepository;
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.EventPlace;
 import dg.hexagonal.domain.EventType;
@@ -20,13 +20,13 @@ import dg.hexagonal.domain.ports.required.EventRepository;
 public class EventServiceTest {
 	
 	private EventRepository eventRepo;
-	private StdioNotifier notifier;
+	private MockNotifier notifier;
 	private EventService eventService;
 	
 	@Before
 	public void setup() {
-		eventRepo = new TestRepository();
-		notifier = new StdioNotifier();
+		eventRepo = new MockEventRepository();
+		notifier = new MockNotifier();
 		eventService = new EventService(eventRepo, notifier);
 	}
 	
@@ -48,7 +48,7 @@ public class EventServiceTest {
 		Event event = eventRepo.getEventByName("test event");
 		assertNotNull(event);
 		assertTrue(event.getPlace().equals(givenPlace));
-		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_ADDED));
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.EVENT_ADDED));
 	}
 	
 	@Test
@@ -71,7 +71,7 @@ public class EventServiceTest {
 		assertTrue(event.getType().equals(EventType.MOVIE));
 		assertTrue(event.getPlace().equals(newPlace));
 		
-		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_UPDATED));
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.EVENT_UPDATED));
 	}
 	
 	@Test
@@ -93,7 +93,7 @@ public class EventServiceTest {
 		assertTrue(event.getType().equals(EventType.FAMILY));
 		assertTrue(event.getPlace().equals(givenPlace));
 		
-		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_UPDATED));
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.EVENT_UPDATED));
 	}
 	
 	@Test
@@ -120,7 +120,7 @@ public class EventServiceTest {
 		assertTrue(event.getType().equals(EventType.INDOOR));
 		assertTrue(event.getPlace().equals(newPlace));
 		
-		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_UPDATED));
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.EVENT_UPDATED));
 	}
 	
 	@Test
@@ -139,7 +139,7 @@ public class EventServiceTest {
 		assertNotNull(event);
 		assertTrue(event.isAborted());
 		
-		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_ABORTED));
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.EVENT_ABORTED));
 	}
 	
 	@Test
@@ -157,6 +157,6 @@ public class EventServiceTest {
 		Event event = eventRepo.getEventById(1l);
 		assertNull(event);
 		
-		assertTrue(notifier.containsOnlyNotification(NotificationType.EVENT_DELETED));
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.EVENT_DELETED));
 	}
 }

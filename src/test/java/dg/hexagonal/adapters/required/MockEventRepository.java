@@ -21,8 +21,11 @@ public class MockEventRepository implements EventRepository {
 		eventMap.put(id, event);
 	}
 
-	public Event updateEventById(Long eventId, Event event) {
-		return eventMap.put(eventId, event);
+	public Event updateEvent(Event event) {
+		eventMap.remove(event.getEventId());
+		eventMap.put(event.getEventId(), event);
+		
+		return null;
 	}
 
 	public Event getEventById(Long eventId) {
