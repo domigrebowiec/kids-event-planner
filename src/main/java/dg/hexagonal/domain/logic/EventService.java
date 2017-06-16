@@ -25,12 +25,15 @@ public class EventService {
 	 * @param date
 	 * @param type
 	 * @param place
+	 * @return 
 	 */
-	public void createEvent(String name, DateTime date, EventType type, EventPlace place) {
+	public Event createEvent(String name, DateTime date, EventType type, EventPlace place) {
 		
 		Event event = new Event(name, date, type, place);
-		repository.addEvent(event);
+		event = repository.addEvent(event);
 		notifier.notifyNewEventCreated(event);
+		
+		return event;
 	}
 	
 	/**

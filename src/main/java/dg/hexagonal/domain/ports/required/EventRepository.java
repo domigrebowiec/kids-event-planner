@@ -4,7 +4,7 @@ import dg.hexagonal.domain.Event;
 
 public interface EventRepository {
 	
-	public void addEvent(Event event);
+	public Event addEvent(Event event);
 
 	public Event updateEvent(Event event);
 

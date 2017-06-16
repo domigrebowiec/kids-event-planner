@@ -14,10 +14,11 @@ import dg.hexagonal.adapters.required.MockNotificationType;
 import dg.hexagonal.adapters.required.MockNotifier;
 import dg.hexagonal.domain.Family;
 import dg.hexagonal.domain.FamilyMember;
+import dg.hexagonal.domain.ports.required.FamilyRepository;
 
 public class FamilyServiceTest {
 
-	private MockFamilyRepository repository;
+	private FamilyRepository repository;
 	private MockNotifier notifier;
 	private FamilyService service;
 	

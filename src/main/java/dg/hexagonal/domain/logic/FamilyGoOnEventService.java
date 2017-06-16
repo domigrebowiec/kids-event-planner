@@ -2,16 +2,23 @@ package dg.hexagonal.domain.logic;
 
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.Family;
+import dg.hexagonal.domain.ports.required.EventRepository;
+import dg.hexagonal.domain.ports.required.FamilyGoOnEventRepository;
 import dg.hexagonal.domain.ports.required.FamilyNotifier;
 import dg.hexagonal.domain.ports.required.FamilyRepository;
 
 public class FamilyGoOnEventService {
 
-	private FamilyRepository repository;
+	private EventRepository eventRepository;
+	private FamilyRepository familyRepository;
+	private FamilyGoOnEventRepository repository;
 	private FamilyNotifier notifier;
 	
-	public FamilyGoOnEventService(FamilyRepository repository, FamilyNotifier notifier) {
+	public FamilyGoOnEventService(EventRepository eventRepository, FamilyRepository familyRepository, 
+			FamilyGoOnEventRepository repository, FamilyNotifier notifier) {
 		super();
+		this.eventRepository = eventRepository;
+		this.familyRepository = familyRepository;
 		this.repository = repository;
 		this.notifier = notifier;
 	}
@@ -23,9 +30,11 @@ public class FamilyGoOnEventService {
 	 * @param familyId
 	 */
 	public void familyGoOnEvent(Long eventId, Long familyId) {
+		// TODO eventRepository and familyRepository only needed for notifications - think if it is needed
+		repository.familyGoOnEvent(eventId, familyId);
 		
-		Family family = repository.getFamilyById(familyId);
-		Event event = repository.familyGoOnEvent(eventId, familyId);
+		Event event = eventRepository.getEventById(eventId);
+		Family family = familyRepository.getFamilyById(familyId);
 		notifier.notifyFamilyGoOnEvent(event, family);
 	}
 	
@@ -37,8 +46,10 @@ public class FamilyGoOnEventService {
 	 */
 	public void familyIsInterestedInEvent(Long eventId, Long familyId) {
 		
-		Family family = repository.getFamilyById(familyId);
-		Event event = repository.familyIsInterestedInEvent(eventId, familyId);
+		repository.familyIsInterestedInEvent(eventId, familyId);
+		
+		Event event = eventRepository.getEventById(eventId);
+		Family family = familyRepository.getFamilyById(familyId);
 		notifier.notifyFamilyIsInterestedInEvent(event, family);
 	}
 	
@@ -50,8 +61,10 @@ public class FamilyGoOnEventService {
 	 */
 	public void familyResignFromEvent(Long eventId, Long familyId) {
 		
-		Family family = repository.getFamilyById(familyId);
-		Event event = repository.familyResignFromEvent(eventId, familyId);
+		repository.familyResignFromEvent(eventId, familyId);
+		
+		Event event = eventRepository.getEventById(eventId);
+		Family family = familyRepository.getFamilyById(familyId);
 		notifier.notifyFamilyResignFromEvent(event, family);
 	}
 }

@@ -22,8 +22,9 @@ public class FamilyService {
 	 * @param father
 	 * @param emailAddress
 	 * @param kids
+	 * @return 
 	 */
-	public void createNewFamily(FamilyMember mother, FamilyMember father, String emailAddress, FamilyMember... kids) {
+	public Family createNewFamily(FamilyMember mother, FamilyMember father, String emailAddress, FamilyMember... kids) {
 		
 		Family family = new Family(mother, father, emailAddress, kids);
 		mother.setFamily(family);
@@ -32,8 +33,10 @@ public class FamilyService {
 			kid.setFamily(family);
 		}
 		
-		repository.addFamily(family);
+		family = repository.addFamily(family);
 		notifier.notifyNewFamily(family);
+		
+		return family;
 	}
 	
 	/**

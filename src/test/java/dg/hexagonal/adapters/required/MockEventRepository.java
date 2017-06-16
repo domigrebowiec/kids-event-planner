@@ -14,11 +14,13 @@ public class MockEventRepository implements EventRepository {
 		eventMap = new HashMap<Long, Event>();
 	}
 
-	public void addEvent(Event event) {
+	public Event addEvent(Event event) {
 		Long id = (long) (eventMap.size() + 1);
 		
 		event.setEventId(id);
 		eventMap.put(id, event);
+		
+		return event;
 	}
 
 	public Event updateEvent(Event event) {
