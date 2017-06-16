@@ -11,4 +11,6 @@ public interface FamilyGoOnEventRepository {
 	public void familyResignFromEvent(Long eventId, Long familyId);
 
 	public List<Long> getFamiliesGoOnEvent(Long eventId);
+	
+	public List<Long> getFamiliesInterestedInEvent(Long eventId);
 }

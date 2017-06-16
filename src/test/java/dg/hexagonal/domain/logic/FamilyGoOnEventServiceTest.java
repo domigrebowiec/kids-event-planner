@@ -51,4 +51,22 @@ public class FamilyGoOnEventServiceTest {
 		
 		assertTrue(notifier.containsOnlyNotification(MockNotificationType.FAMILY_GO_ON_EVENT));
 	}
+	
+	@Test
+	public void shouldAddFamilyAsInterestedInEvent() {
+		
+		// given
+		Long eventId = 4l;
+		Long familyId = 34l;
+		
+		// when
+		service.familyIsInterestedInEvent(eventId, familyId);
+		
+		// then
+		List<Long> familiesId = repository.getFamiliesInterestedInEvent(eventId);
+		assertEquals(1, familiesId.size());
+		assertEquals((Long)34l, familiesId.get(0));
+		
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.FAMILY_INTERESTED_IN_EVENT));
+	}
 }

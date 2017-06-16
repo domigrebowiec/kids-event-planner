@@ -83,8 +83,8 @@ public class MockNotifier implements Notifier, FamilyNotifier {
 	}
 
 	public void notifyFamilyIsInterestedInEvent(Event event, Family family) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("[TEST] Family go on event.");
+		notifications.add(MockNotificationType.FAMILY_INTERESTED_IN_EVENT);
 	}
 
 	public void notifyFamilyResignFromEvent(Event event, Family family) {

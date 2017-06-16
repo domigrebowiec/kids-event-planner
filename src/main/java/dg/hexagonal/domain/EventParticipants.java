@@ -1,21 +1,39 @@
 package dg.hexagonal.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventParticipants {
 
-	private Event event;
-	private List<Family> familiesGo;
-	private List<Family> familiesInterested;
+	private Long eventId;
+	private List<Long> familiesGoId;
+	private List<Long> familiesInterestedId;
 	
-	public Event getEvent() {
-		return event;
-	}
-	public List<Family> getFamiliesGo() {
-		return familiesGo;
-	}
-	public List<Family> getFamiliesInterested() {
-		return familiesInterested;
+	public EventParticipants(Long eventId) {
+		this.eventId = eventId;
+		this.familiesGoId = new ArrayList<Long>();
+		this.familiesInterestedId = new ArrayList<Long>();
 	}
 	
+	public Long getEvent() {
+		return eventId;
+	}
+	public List<Long> getFamiliesGo() {
+		return familiesGoId;
+	}
+	public List<Long> getFamiliesInterested() {
+		return familiesInterestedId;
+	}
+	
+	public void familyGo(Long familyId) {
+		if (!familiesGoId.contains(familyId)) {
+			familiesGoId.add(familyId);
+		}
+	}
+	
+	public void familyInterestedIn(Long familyId) {
+		if (!familiesInterestedId.contains(familyId)) {
+			familiesInterestedId.add(familyId);
+		}
+	}
 }
