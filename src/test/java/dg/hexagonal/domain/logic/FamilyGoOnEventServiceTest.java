@@ -1,6 +1,7 @@
 package dg.hexagonal.domain.logic;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.junit.Test;
 import dg.hexagonal.adapters.required.MockEventRepository;
 import dg.hexagonal.adapters.required.MockFamilyGoOnEventRepository;
 import dg.hexagonal.adapters.required.MockFamilyRepository;
+import dg.hexagonal.adapters.required.MockNotificationType;
 import dg.hexagonal.adapters.required.MockNotifier;
 import dg.hexagonal.domain.ports.required.EventRepository;
 import dg.hexagonal.domain.ports.required.FamilyGoOnEventRepository;
@@ -45,6 +47,8 @@ public class FamilyGoOnEventServiceTest {
 		// then
 		List<Long> familiesId = repository.getFamiliesGoOnEvent(eventId);
 		assertEquals(1, familiesId.size());
-		assertEquals((Long)22l, familiesId.get(0));	
+		assertEquals((Long)22l, familiesId.get(0));
+		
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.FAMILY_GO_ON_EVENT));
 	}
 }
