@@ -69,4 +69,50 @@ public class FamilyGoOnEventServiceTest {
 		
 		assertTrue(notifier.containsOnlyNotification(MockNotificationType.FAMILY_INTERESTED_IN_EVENT));
 	}
+	
+	@Test
+	public void shouldFamilyResignFromEventWhenGo() {
+		
+		// given
+		Long eventId = 4l;
+		Long familyId = 50l;
+		
+		service.familyGoOnEvent(eventId, familyId);
+		notifier.clear();
+		// check before test
+		List<Long> familiesId = repository.getFamiliesGoOnEvent(eventId);
+		assertEquals(1, familiesId.size());
+		assertEquals((Long)50l, familiesId.get(0));
+		
+		// when
+		service.familyResignFromEvent(eventId, familyId);
+				
+		// then
+		assertEquals(0, repository.getFamiliesGoOnEvent(eventId).size());
+				
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.FAMILY_RESIGN_FROM_EVENT));
+	}
+	
+	@Test
+	public void shouldFamilyResignFromEventWhenInterestedIn() {
+		
+		// given
+		Long eventId = 4l;
+		Long familyId = 51l;
+		
+		service.familyIsInterestedInEvent(eventId, familyId);
+		notifier.clear();
+		// check before test
+		List<Long> familiesId = repository.getFamiliesInterestedInEvent(eventId);
+		assertEquals(1, familiesId.size());
+		assertEquals((Long)51l, familiesId.get(0));
+		
+		// when
+		service.familyResignFromEvent(eventId, familyId);
+				
+		// then
+		assertEquals(0, repository.getFamiliesInterestedInEvent(eventId).size());
+				
+		assertTrue(notifier.containsOnlyNotification(MockNotificationType.FAMILY_RESIGN_FROM_EVENT));
+	}
 }

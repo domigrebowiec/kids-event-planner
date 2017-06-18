@@ -32,8 +32,10 @@ public class MockFamilyGoOnEventRepository implements FamilyGoOnEventRepository 
 	}
 
 	public void familyResignFromEvent(Long eventId, Long familyId) {
-		// TODO Auto-generated method stub
-		
+		if (!eventParticipants.containsKey(eventId)) {
+			return;
+		}
+		eventParticipants.get(eventId).familyResignFrom(familyId);
 	}
 
 	public List<Long> getFamiliesGoOnEvent(Long eventId) {

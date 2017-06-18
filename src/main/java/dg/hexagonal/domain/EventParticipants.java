@@ -36,4 +36,13 @@ public class EventParticipants {
 			familiesInterestedId.add(familyId);
 		}
 	}
+	
+	public void familyResignFrom(Long familyId) {
+		if (familiesGoId.contains(familyId)) {
+			familiesGoId.remove(familyId);
+		}
+		if (familiesInterestedId.contains(familyId)) {
+			familiesInterestedId.remove(familyId);
+		}
+	}
 }
