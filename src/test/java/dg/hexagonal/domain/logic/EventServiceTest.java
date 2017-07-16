@@ -45,7 +45,7 @@ public class EventServiceTest {
 		eventService.createEvent("test event", new DateTime(), EventType.INDOOR, givenPlace);
 		
 		// then
-		Event event = eventRepo.getEventByName("test event");
+		Event event = eventRepo.getEventById(1L);
 		assertNotNull(event);
 		assertTrue(event.getPlace().equals(givenPlace));
 		assertTrue(notifier.containsOnlyNotification(MockNotificationType.EVENT_ADDED));
@@ -65,7 +65,7 @@ public class EventServiceTest {
 		eventService.updateEvent(1l, "test event", null, EventType.MOVIE, newPlace);
 		
 		// then
-		Event event = eventRepo.getEventByName("test event");
+		Event event = eventRepo.getEventById(1L);
 		assertNotNull(event);
 		assertTrue(event.getDate().equals(date.getMillis()));
 		assertTrue(event.getType().equals(EventType.MOVIE));
@@ -87,7 +87,7 @@ public class EventServiceTest {
 		eventService.updateEvent(1l, null, null, null, null);
 		
 		// then
-		Event event = eventRepo.getEventByName("test event");
+		Event event = eventRepo.getEventById(1L);
 		assertNotNull(event);
 		assertTrue(event.getDate().equals(date.getMillis()));
 		assertTrue(event.getType().equals(EventType.FAMILY));

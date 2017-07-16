@@ -11,8 +11,10 @@
       <id name="id" type="long" column="PLACE_ID">
          <generator class="identity"/>
       </id>
-      <property name="coordX" column="COORDX" type="long"/>
-      <property name="coordY" column="COORDY" type="long"/>    
-      <property name="name" column="NAME" type="string"/>
+      <properties name="unique_eventplace_cols" unique="true">
+	      <property name="coordX" column="COORDX" type="long"/>
+	      <property name="coordY" column="COORDY" type="long"/>    
+	      <property name="name" column="NAME" type="string"/>
+      </properties>
    </class>
 </hibernate-mapping>

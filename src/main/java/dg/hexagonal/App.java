@@ -19,9 +19,10 @@ public class App {
 		@SuppressWarnings("resource")
 		EventService eventService = (EventService) new ClassPathXmlApplicationContext("spring.xml").getBean("eventService");
 				
-		EventPlace monkeyTown = new EventPlace(10, 20, "Monkey Town");		
-		eventService.createEvent("Ola's birthday", new DateTime(2018, 1, 5, 10, 30), EventType.FAMILY, monkeyTown);
-		eventService.createEvent("Wojtek's birthday", new DateTime(2018, 1, 15, 12, 30), EventType.FAMILY, monkeyTown);
-		System.out.println("Event added to DB");		
+		EventPlace monkeyTown = new EventPlace(10, 20, "Monkey Town");
+		EventPlace ballorig = new EventPlace(3456, 11111, "Ballorig");	
+		eventService.createEvent("7th Ola's birthday", new DateTime(2019, 1, 5, 10, 30), EventType.FAMILY, monkeyTown);
+		eventService.createEvent("5th Wojtek's birthday", new DateTime(2019, 1, 15, 12, 30), EventType.FAMILY, ballorig);
+				
 	}
 }

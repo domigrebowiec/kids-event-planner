@@ -15,6 +15,8 @@ public class Event implements Serializable {
 	private EventPlace place;
 	private boolean aborted;
 	
+	public Event() {}
+	
 	public Event(String name, DateTime date, EventType type, EventPlace place) {
 		super();
 		this.name = name;
@@ -122,6 +124,11 @@ public class Event implements Serializable {
 		if (type != other.type)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Event [name=" + name + ", date=" + date + ", type=" + type + ", place=" + place + "]";
 	}
 	
 }

@@ -11,6 +11,8 @@ public class EventPlace implements Serializable {
 	private long coordY;
 	private String name;
 
+	public EventPlace() {}
+	
 	public EventPlace(long coordX, long coordY, String name) {
 		super();
 		this.coordX = coordX;
@@ -70,6 +72,11 @@ public class EventPlace implements Serializable {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "EventPlace [coordX=" + coordX + ", coordY=" + coordY + ", name=" + name + "]";
 	}
 
 }

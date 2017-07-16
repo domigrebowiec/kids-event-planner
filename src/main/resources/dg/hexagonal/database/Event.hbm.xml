@@ -11,17 +11,19 @@
       <id name="eventId" type="java.lang.Long" column="ID">
          <generator class="identity"/>
       </id>
-      <property name="name" column="NAME" type="string"/>
-      <property name="date" column="DATE" type="long"/>
-      <property name="type" column="TYPE">
-	  	<type name="org.hibernate.type.EnumType">
-	        <param name="enumClass">dg.hexagonal.domain.EventType</param>
-	        <param name="useNamed">true</param>
-	    </type>
-	  </property> 	
-      <many-to-one name="place" class="dg.hexagonal.domain.EventPlace" cascade="all">
-      	<column name="PLACE_ID" not-null="true"/>
-      </many-to-one>      
+      <properties name="unique_eventplace_cols" unique="true">
+	      <property name="name" column="NAME" type="string"/>
+		  <property name="date" column="DATE" type="long"/>
+	      <property name="type" column="TYPE">
+		  	<type name="org.hibernate.type.EnumType">
+		        <param name="enumClass">dg.hexagonal.domain.EventType</param>
+		        <param name="useNamed">true</param>
+		    </type>
+		  </property> 	
+	      <many-to-one name="place" class="dg.hexagonal.domain.EventPlace" cascade="all">
+	      	<column name="PLACE_ID" not-null="true"/>
+	      </many-to-one>      
+ 	  </properties>
       <property name="aborted" column="ABORTED" type="boolean"/>
    </class>
 </hibernate-mapping>
