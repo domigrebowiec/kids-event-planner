@@ -67,7 +67,7 @@ public class EventServiceTest {
 		// then
 		Event event = eventRepo.getEventByName("test event");
 		assertNotNull(event);
-		assertTrue(event.getDate().equals(date));
+		assertTrue(event.getDate().equals(date.getMillis()));
 		assertTrue(event.getType().equals(EventType.MOVIE));
 		assertTrue(event.getPlace().equals(newPlace));
 		
@@ -89,7 +89,7 @@ public class EventServiceTest {
 		// then
 		Event event = eventRepo.getEventByName("test event");
 		assertNotNull(event);
-		assertTrue(event.getDate().equals(date));
+		assertTrue(event.getDate().equals(date.getMillis()));
 		assertTrue(event.getType().equals(EventType.FAMILY));
 		assertTrue(event.getPlace().equals(givenPlace));
 		
@@ -116,7 +116,7 @@ public class EventServiceTest {
 		Event event = eventRepo.getEventById(1l);
 		assertNotNull(event);
 		assertTrue(event.getName().equals("new event name"));
-		assertTrue(event.getDate().equals(newDate));
+		assertTrue(event.getDate().equals(newDate.getMillis()));
 		assertTrue(event.getType().equals(EventType.INDOOR));
 		assertTrue(event.getPlace().equals(newPlace));
 		

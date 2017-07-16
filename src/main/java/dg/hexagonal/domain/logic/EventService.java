@@ -1,6 +1,7 @@
 package dg.hexagonal.domain.logic;
 
 import org.joda.time.DateTime;
+import org.springframework.transaction.annotation.Transactional;
 
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.EventPlace;
@@ -27,6 +28,7 @@ public class EventService {
 	 * @param place
 	 * @return 
 	 */
+	@Transactional
 	public Event createEvent(String name, DateTime date, EventType type, EventPlace place) {
 		
 		Event event = new Event(name, date, type, place);
@@ -50,7 +52,7 @@ public class EventService {
 		Event oldEvent = repository.getEventById(eventId);
 		
 		String uName = (name == null) ? oldEvent.getName() : name;
-		DateTime uDate = (date == null) ? oldEvent.getDate() : date;
+		DateTime uDate = (date == null) ? new DateTime(oldEvent.getDate()) : date;
 		EventType uType = (type == null) ? oldEvent.getType() : type;
 		EventPlace uPlace = (place == null) ? oldEvent.getPlace() : place;
 		Event updatedEvent = new Event(uName, uDate, uType, uPlace); 

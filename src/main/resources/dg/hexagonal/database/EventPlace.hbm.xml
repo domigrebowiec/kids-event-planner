@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="dg.hexagonal.domain.EventPlace" table="EVENT_PLACE">
+      <meta attribute="class-description">
+         This class contains the event place detail. 
+      </meta>
+      <id name="id" type="long" column="PLACE_ID">
+         <generator class="identity"/>
+      </id>
+      <property name="coordX" column="COORDX" type="long"/>
+      <property name="coordY" column="COORDY" type="long"/>    
+      <property name="name" column="NAME" type="string"/>
+   </class>
+</hibernate-mapping>

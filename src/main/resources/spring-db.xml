@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.sqlite.JDBC"/>
+        <property name="url" value="jdbc:sqlite:kidsEventPlanner.db"/>
+        <property name="username" value=""/>
+        <property name="password" value=""/>
+    </bean>
+	
+<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> -->
+<!--         <property name="driverClassName" value="org.hsqldb.jdbcDriver"/> -->
+<!--         <property name="url" value="jdbc:hsqldb:file:mydb"/> -->
+<!--         <property name="username" value="sa"/> -->
+<!--         <property name="password" value="sa"/> -->
+<!--     </bean> -->
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+            <list>
+                <value>dg/hexagonal/database/Event.hbm.xml</value>
+                <value>dg/hexagonal/database/EventPlace.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.SQLiteDialect
+				<!-- hibernate.dialect=org.hibernate.dialect.HSQLDialect -->
+				<!-- hibernate.hbm2ddl.auto=create -->
+			</value>			
+        </property>
+    </bean>
+
+</beans>

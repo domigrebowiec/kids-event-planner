@@ -1,12 +1,16 @@
 package dg.hexagonal.domain;
 
+import java.io.Serializable;
+
 import org.joda.time.DateTime;
 
-public class Event {
+public class Event implements Serializable {
 
+	private static final long serialVersionUID = -5612869853483128693L;
+	
 	private Long eventId;
 	private String name;
-	private DateTime date;	
+	private Long date;	
 	private EventType type;
 	private EventPlace place;
 	private boolean aborted;
@@ -14,7 +18,7 @@ public class Event {
 	public Event(String name, DateTime date, EventType type, EventPlace place) {
 		super();
 		this.name = name;
-		this.date = date;
+		this.date = date.getMillis();
 		this.type = type;
 		this.place = place;
 		this.aborted = false;
@@ -35,7 +39,7 @@ public class Event {
 		return name;
 	}
 
-	public DateTime getDate() {
+	public Long getDate() {
 		return date;
 	}
 
@@ -45,6 +49,22 @@ public class Event {
 
 	public EventPlace getPlace() {
 		return place;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDate(Long date) {
+		this.date = date;
+	}
+
+	public void setType(EventType type) {
+		this.type = type;
+	}
+
+	public void setPlace(EventPlace place) {
+		this.place = place;
 	}
 
 	public boolean isAborted() {
