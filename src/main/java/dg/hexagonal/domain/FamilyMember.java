@@ -1,9 +1,13 @@
 package dg.hexagonal.domain;
 
+import java.io.Serializable;
+
 import org.joda.time.DateTime;
 
-public class FamilyMember {
+public class FamilyMember implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String firstName;
 	private String lastName;
 	private Family family;
