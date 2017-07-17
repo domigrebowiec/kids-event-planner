@@ -8,6 +8,7 @@ public class FamilyMember implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private Family family;
@@ -21,6 +22,14 @@ public class FamilyMember implements Serializable {
 		this.dateOfBirth = dateOfBirth.getMillis();
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
