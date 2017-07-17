@@ -3,7 +3,11 @@ package dg.hexagonal.adapters.required;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.joda.time.DateTime;
+
 import dg.hexagonal.domain.Event;
+import dg.hexagonal.domain.EventPlace;
+import dg.hexagonal.domain.EventType;
 import dg.hexagonal.domain.ports.required.EventRepository;
 
 public class MockEventRepository implements EventRepository {
@@ -33,8 +37,13 @@ public class MockEventRepository implements EventRepository {
 	public Event getEventById(Long eventId) {
 		return eventMap.get(eventId);
 	}
+	
+	public Event deleteEvent(Long eventId) {
+		return eventMap.remove(eventId);
+	}
 
-	public Event getEventByName(String name) {
+	@Override
+	public Event getEventBy(String name, DateTime date, EventType type, EventPlace place) {
 		for (Event event : eventMap.values()) {
 			if (event.getName().equals(name)){
 				return event;
@@ -43,8 +52,14 @@ public class MockEventRepository implements EventRepository {
 		return null;
 	}
 
-	public Event deleteEvent(Long eventId) {
-		return eventMap.remove(eventId);
+	@Override
+	public EventPlace getEventPlaceBy(EventPlace place) {
+		for (Event event : eventMap.values()) {
+			if (event.getPlace().getName().equals(place.getName())){
+				return event.getPlace();
+			}
+		}
+		return null;
 	}
 
 }

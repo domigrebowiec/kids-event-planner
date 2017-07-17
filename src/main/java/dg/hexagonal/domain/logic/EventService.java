@@ -1,6 +1,7 @@
 package dg.hexagonal.domain.logic;
 
 import org.joda.time.DateTime;
+import org.springframework.transaction.annotation.Transactional;
 
 import dg.hexagonal.domain.Event;
 import dg.hexagonal.domain.EventPlace;
@@ -27,11 +28,27 @@ public class EventService {
 	 * @param place
 	 * @return 
 	 */
+	@Transactional
 	public Event createEvent(String name, DateTime date, EventType type, EventPlace place) {
 		
-		Event event = new Event(name, date, type, place);
+		Event event = repository.getEventBy(name, date, type, place);
+		// already found event - don't add it again
+		if (event != null) {
+			System.out.println("Event already found in DB. " + event);
+			return event;
+		}
+		
+		EventPlace placeFromDB = repository.getEventPlaceBy(place);
+		if (placeFromDB != null) {
+			place = placeFromDB;
+			System.out.println("Place was already in DB. "  + place);
+		}
+		
+		event = new Event(name, date, type, place);		
 		event = repository.addEvent(event);
 		notifier.notifyNewEventCreated(event);
+		
+		System.out.println("Event added to DB. " + event);
 		
 		return event;
 	}
@@ -50,7 +67,7 @@ public class EventService {
 		Event oldEvent = repository.getEventById(eventId);
 		
 		String uName = (name == null) ? oldEvent.getName() : name;
-		DateTime uDate = (date == null) ? oldEvent.getDate() : date;
+		DateTime uDate = (date == null) ? new DateTime(oldEvent.getDate()) : date;
 		EventType uType = (type == null) ? oldEvent.getType() : type;
 		EventPlace uPlace = (place == null) ? oldEvent.getPlace() : place;
 		Event updatedEvent = new Event(uName, uDate, uType, uPlace); 
