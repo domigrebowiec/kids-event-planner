@@ -7,30 +7,46 @@ public class FamilyMember {
 	private String firstName;
 	private String lastName;
 	private Family family;
-	private DateTime dateOfBirth;
+	private Long dateOfBirth;
 	
 	public FamilyMember(String firstName, String lastName, DateTime dateOfBirth) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.family = null;
-		this.dateOfBirth = dateOfBirth;
+		this.dateOfBirth = dateOfBirth.getMillis();
 	}
 	
 	public String getFirstName() {
 		return firstName;
 	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public Family getFamily() {
 		return family;
 	}
+
 	public void setFamily(Family family) {
 		this.family = family;
 	}
-	public DateTime getDateOfBirth() {
+
+	public Long getDateOfBirth() {
 		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Long dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	@Override
