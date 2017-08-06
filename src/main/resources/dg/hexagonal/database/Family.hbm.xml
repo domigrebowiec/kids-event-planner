@@ -6,24 +6,13 @@
 <hibernate-mapping>
    <class name="dg.hexagonal.domain.Family" table="FAMILY">
       <meta attribute="class-description">
-         This class contains the event detail. 
+         This class contains the family detail. 
       </meta>
       <id name="familyId" type="java.lang.Long" column="ID">
          <generator class="identity"/>
       </id>
-      <properties name="unique_family_cols" unique="true">
-      		<!-- one-to-one -->
-	      <many-to-one name="mother" class="dg.hexagonal.domain.FamilyMember" cascade="all" unique="true">
-	      	<column name="MOTHER" not-null="true"/>
-	      </many-to-one>
-	      <many-to-one name="father" class="dg.hexagonal.domain.FamilyMember" cascade="all" unique="true">
-	      	<column name="FATHER" not-null="true"/>
-	      </many-to-one>
+      <properties name="unique_family_cols" unique="true"> 
 	      <property name="emailAddress" column="EMAIL_ADDRESS" type="string"/>		  
  	  </properties>
- 	  <set name="kids" table="FAMILY_MEMBER" inverse="true" lazy="true" fetch="select">
-      	<key><column name="KID_ID" not-null="true"/></key>
-      	<one-to-many class="dg.hexagonal.domain.FamilyMember"/>
-      </set>
    </class>
 </hibernate-mapping>

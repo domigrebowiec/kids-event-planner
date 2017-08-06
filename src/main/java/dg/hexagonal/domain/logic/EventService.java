@@ -62,6 +62,7 @@ public class EventService {
 	 * @param type
 	 * @param place
 	 */
+	@Transactional
 	public void updateEvent(Long eventId, String name, DateTime date, EventType type, EventPlace place) {
 		
 		Event oldEvent = repository.getEventById(eventId);
@@ -81,6 +82,7 @@ public class EventService {
 	 * Event with given eventId will be aborted. It will not be deleted from repository.
 	 * @param eventId
 	 */
+	@Transactional
 	public void abortEvent(Long eventId) {
 		
 		Event event = repository.getEventById(eventId);
@@ -93,6 +95,7 @@ public class EventService {
 	 * Event with given eventId will be deleted from repository.
 	 * @param eventId
 	 */
+	@Transactional
 	public void deleteEvent(Long eventId) {
 		
 		Event event = repository.deleteEvent(eventId);

@@ -33,7 +33,7 @@
 			<value>
 				hibernate.dialect=org.hibernate.dialect.SQLiteDialect
 				<!-- hibernate.dialect=org.hibernate.dialect.HSQLDialect -->
-				<!-- hibernate.hbm2ddl.auto=create --><!-- if enabled reacreate db schema but loose all data -->
+				hibernate.hbm2ddl.auto=create<!-- if enabled reacreate db schema but loose all data -->
 			</value>			
         </property>
     </bean>

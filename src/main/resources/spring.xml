@@ -16,7 +16,7 @@
 	<context:component-scan base-package="dg.hexagonal.services.database"/>
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-   <bean id = "transactionManager" class = "org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <bean id = "transactionManager" class = "org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name = "sessionFactory" ref = "sessionFactory" />
     </bean>
     
@@ -24,10 +24,21 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<bean id="familyRepo" class="dg.hexagonal.services.database.HibernateFamilyRepo">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 	<bean id="consoleNotifier" class="dg.hexagonal.services.notify.ConsoleNotifier"/>
+
+	<bean id="consoleFamilyNotifier" class="dg.hexagonal.services.notify.ConsoleFamilyNotifier"/>
 
 	<bean id="eventService" class="dg.hexagonal.domain.logic.EventService">
 		<constructor-arg index="0" ref="eventRepo"/>
 		<constructor-arg index="1" ref="consoleNotifier"/>
+	</bean>
+	
+	<bean id="familyService" class="dg.hexagonal.domain.logic.FamilyService">
+		<constructor-arg index="0" ref="familyRepo"/>
+		<constructor-arg index="1" ref="consoleFamilyNotifier"/>
 	</bean>
 </beans>
