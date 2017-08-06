@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="dg.hexagonal.domain.FamilyMember" table="FAMILY_MEMBER">
+      <meta attribute="class-description">
+         This class contains the event detail. 
+      </meta>
+      <id name="id" type="java.lang.Long" column="ID">
+         <generator class="identity"/>
+      </id>
+      <properties name="unique_familymember_cols" unique="true">
+	      <property name="firstName" column="FIRST_NAME" type="string"/>
+		  <property name="lastName" column="LAST_NAME" type="string"/> 
+		  <property name="dateOfBirth" column="DATE_OF_BIRTH" type="long"/>
+<!-- 		  <many-to-one name="family" class="dg.hexagonal.domain.Family" cascade="all"> -->
+<!-- 	      	<column name="FAMILY_ID" not-null="true"/> -->
+<!-- 	      </many-to-one> -->
+ 	  </properties>
+   </class>
+</hibernate-mapping>

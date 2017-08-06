@@ -25,13 +25,14 @@
             <list>
                 <value>dg/hexagonal/database/Event.hbm.xml</value>
                 <value>dg/hexagonal/database/EventPlace.hbm.xml</value>
+                <value>dg/hexagonal/database/FamilyMember.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
 			<value>
 				hibernate.dialect=org.hibernate.dialect.SQLiteDialect
 				<!-- hibernate.dialect=org.hibernate.dialect.HSQLDialect -->
-				<!-- hibernate.hbm2ddl.auto=create --> <!-- if enabled reacreate db schema but loose all data -->
+				<!-- hibernate.hbm2ddl.auto=create --><!-- if enabled reacreate db schema but loose all data -->
 			</value>			
         </property>
     </bean>
