@@ -1,5 +1,7 @@
 package dg.hexagonal.domain.logic;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import dg.hexagonal.domain.Family;
 import dg.hexagonal.domain.FamilyMember;
 import dg.hexagonal.domain.ports.required.FamilyNotifier;
@@ -24,6 +26,7 @@ public class FamilyService {
 	 * @param kids
 	 * @return 
 	 */
+	@Transactional
 	public Family createNewFamily(FamilyMember mother, FamilyMember father, String emailAddress, FamilyMember... kids) {
 		
 		Family family = new Family(mother, father, emailAddress, kids);

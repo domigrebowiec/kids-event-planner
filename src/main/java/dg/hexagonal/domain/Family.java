@@ -10,44 +10,64 @@ public class Family {
 	private FamilyMember father;
 	private List<FamilyMember> kids;
 	private String emailAddress;
-		
+
+	public Family() {
+	}
+
 	public Family(FamilyMember mother, FamilyMember father, String emailAddress, FamilyMember... kids) {
 		super();
 		this.mother = mother;
 		this.father = father;
 		this.emailAddress = emailAddress;
-		
+
 		this.kids = new ArrayList<FamilyMember>();
 		for (FamilyMember kid : kids) {
 			this.kids.add(kid);
-		}		
+		}
 	}
 
 	public void setFamilyId(Long familyId) {
-		if (this.familyId != null) { // do not assign familyId if already assigned
-			return;	
-		}	
+		if (this.familyId != null) { // do not assign familyId if already
+										// assigned
+			return;
+		}
 		this.familyId = familyId;
-	}
-
-	public Long getFamilyId() {
-		return familyId;
 	}
 
 	public FamilyMember getMother() {
 		return mother;
 	}
 
+	public void setMother(FamilyMember mother) {
+		this.mother = mother;
+	}
+
 	public FamilyMember getFather() {
 		return father;
+	}
+
+	public void setFather(FamilyMember father) {
+		this.father = father;
 	}
 
 	public List<FamilyMember> getKids() {
 		return kids;
 	}
 
+	public void setKids(List<FamilyMember> kids) {
+		this.kids = kids;
+	}
+
 	public String getEmailAddress() {
 		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
+	public Long getFamilyId() {
+		return familyId;
 	}
 
 	@Override
@@ -97,6 +117,6 @@ public class Family {
 		} else if (!mother.equals(other.mother))
 			return false;
 		return true;
-	}	
-	
+	}
+
 }

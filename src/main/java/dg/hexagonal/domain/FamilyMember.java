@@ -14,6 +14,10 @@ public class FamilyMember implements Serializable {
 	private Family family;
 	private Long dateOfBirth;
 	
+	public FamilyMember() {
+		
+	}
+	
 	public FamilyMember(String firstName, String lastName, DateTime dateOfBirth) {
 		super();
 		this.firstName = firstName;
