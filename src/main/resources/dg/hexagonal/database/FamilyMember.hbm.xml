@@ -15,9 +15,9 @@
 	      <property name="firstName" column="FIRST_NAME" type="string"/>
 		  <property name="lastName" column="LAST_NAME" type="string"/> 
 		  <property name="dateOfBirth" column="DATE_OF_BIRTH" type="long"/>
-<!-- 		  <many-to-one name="family" class="dg.hexagonal.domain.Family" cascade="all"> -->
-<!-- 	      	<column name="FAMILY_ID" not-null="true"/> -->
-<!-- 	      </many-to-one> -->
+		  <many-to-one name="family" class="dg.hexagonal.domain.Family" cascade="all">
+	      	<column name="FAMILY_ID" not-null="true"/>
+	      </many-to-one>
  	  </properties>
    </class>
 </hibernate-mapping>

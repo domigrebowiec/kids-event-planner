@@ -30,24 +30,40 @@ public class Family {
 		this.familyId = familyId;
 	}
 
-	public Long getFamilyId() {
-		return familyId;
-	}
-
 	public FamilyMember getMother() {
 		return mother;
+	}
+
+	public void setMother(FamilyMember mother) {
+		this.mother = mother;
 	}
 
 	public FamilyMember getFather() {
 		return father;
 	}
 
+	public void setFather(FamilyMember father) {
+		this.father = father;
+	}
+
 	public List<FamilyMember> getKids() {
 		return kids;
 	}
 
+	public void setKids(List<FamilyMember> kids) {
+		this.kids = kids;
+	}
+
 	public String getEmailAddress() {
 		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
+	public Long getFamilyId() {
+		return familyId;
 	}
 
 	@Override
