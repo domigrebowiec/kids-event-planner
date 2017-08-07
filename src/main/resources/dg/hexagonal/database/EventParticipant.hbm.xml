@@ -4,9 +4,9 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="dg.hexagonal.domain.EventParticipant" table="EVENT_PARTICIPANT">
+   <class name="dg.hexagonal.services.database.object.EventParticipantDO" table="EVENT_PARTICIPANT">
       <meta attribute="class-description">
-         This class contains the EventParticipants detail. 
+         This class contains the EventParticipant detail. 
       </meta>
       <id name="id" type="java.lang.Long" column="ID">
          <generator class="identity"/>
