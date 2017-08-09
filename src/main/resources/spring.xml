@@ -28,6 +28,10 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<bean id="familyGoOnEventRepo" class="dg.hexagonal.services.database.HibernateFamilyGoOnEventRepo">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 	<bean id="consoleNotifier" class="dg.hexagonal.services.notify.ConsoleNotifier"/>
 
 	<bean id="consoleFamilyNotifier" class="dg.hexagonal.services.notify.ConsoleFamilyNotifier"/>
@@ -40,5 +44,12 @@
 	<bean id="familyService" class="dg.hexagonal.domain.logic.FamilyService">
 		<constructor-arg index="0" ref="familyRepo"/>
 		<constructor-arg index="1" ref="consoleFamilyNotifier"/>
+	</bean>
+
+	<bean id="familyGoOnEventService" class="dg.hexagonal.domain.logic.FamilyGoOnEventService">
+		<constructor-arg index="0" ref="eventRepo"/>
+		<constructor-arg index="1" ref="familyRepo"/>
+		<constructor-arg index="2" ref="familyGoOnEventRepo"/>
+		<constructor-arg index="3" ref="consoleFamilyNotifier"/>
 	</bean>
 </beans>

@@ -1,6 +1,11 @@
 package dg.hexagonal.domain.logic;
 
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import dg.hexagonal.domain.Event;
+import dg.hexagonal.domain.EventParticipants;
 import dg.hexagonal.domain.Family;
 import dg.hexagonal.domain.ports.required.EventRepository;
 import dg.hexagonal.domain.ports.required.FamilyGoOnEventRepository;
@@ -29,6 +34,7 @@ public class FamilyGoOnEventService {
 	 * @param eventId
 	 * @param familyId
 	 */
+	@Transactional
 	public void familyGoOnEvent(Long eventId, Long familyId) {
 		// TODO eventRepository and familyRepository only needed for notifications - think if it is needed
 		repository.familyGoOnEvent(eventId, familyId);
@@ -66,5 +72,17 @@ public class FamilyGoOnEventService {
 		Event event = eventRepository.getEventById(eventId);
 		Family family = familyRepository.getFamilyById(familyId);
 		notifier.notifyFamilyResignFromEvent(event, family);
+	}
+	
+	@Transactional
+	public EventParticipants getFamiliesGoOn(Long eventId) {
+		
+		List<Long> familiesId = repository.getFamiliesGoOnEvent(eventId);
+		EventParticipants eventParticipants = new EventParticipants(eventId);
+		for (Long id : familiesId) {
+			eventParticipants.familyGo(id);
+		}
+		
+		return eventParticipants;
 	}
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="dg.hexagonal.services.database.object.EventParticipantDO" table="EVENT_PARTICIPANT">
+      <meta attribute="class-description">
+         This class contains the EventParticipant detail. 
+      </meta>
+      <id name="id" type="java.lang.Long" column="ID">
+         <generator class="identity"/>
+      </id>
+      <properties name="unique_eventparticipants_cols" unique="true"> 
+	      <property name="eventId" column="EVENT_ID" type="java.lang.Long"/>
+	      <property name="familyId" column="FAMILY_ID" type="java.lang.Long"/>
+	      <property name="onlyInterested" column="ONLY_INTERESTED" type="boolean"/>		  
+ 	  </properties>
+   </class>
+</hibernate-mapping>
