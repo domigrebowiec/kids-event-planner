@@ -4,11 +4,12 @@ public class EventParticipantDO {
 
 	private Long id;
 	private Long eventId;
-	private Long familyIdGo;
-	private Long familyIdInterested;
+	private Long familyId;
+	private boolean onlyInterested;
 
 	public EventParticipantDO() {
 		super();
+		onlyInterested = false;
 	}
 
 	public Long getId() {
@@ -27,20 +28,20 @@ public class EventParticipantDO {
 		this.eventId = eventId;
 	}
 
-	public Long getFamilyIdGo() {
-		return familyIdGo;
+	public Long getFamilyId() {
+		return familyId;
 	}
 
-	public void setFamilyIdGo(Long familyIdGo) {
-		this.familyIdGo = familyIdGo;
+	public void setFamilyId(Long familyId) {
+		this.familyId = familyId;
 	}
 
-	public Long getFamilyIdInterested() {
-		return familyIdInterested;
+	public boolean isOnlyInterested() {
+		return onlyInterested;
 	}
 
-	public void setFamilyIdInterested(Long familyIdInterested) {
-		this.familyIdInterested = familyIdInterested;
+	public void setOnlyInterested(boolean onlyInterested) {
+		this.onlyInterested = onlyInterested;
 	}
 
 	@Override
@@ -48,8 +49,9 @@ public class EventParticipantDO {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((eventId == null) ? 0 : eventId.hashCode());
-		result = prime * result + ((familyIdGo == null) ? 0 : familyIdGo.hashCode());
-		result = prime * result + ((familyIdInterested == null) ? 0 : familyIdInterested.hashCode());
+		result = prime * result + ((familyId == null) ? 0 : familyId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (onlyInterested ? 1231 : 1237);
 		return result;
 	}
 
@@ -67,15 +69,17 @@ public class EventParticipantDO {
 				return false;
 		} else if (!eventId.equals(other.eventId))
 			return false;
-		if (familyIdGo == null) {
-			if (other.familyIdGo != null)
+		if (familyId == null) {
+			if (other.familyId != null)
 				return false;
-		} else if (!familyIdGo.equals(other.familyIdGo))
+		} else if (!familyId.equals(other.familyId))
 			return false;
-		if (familyIdInterested == null) {
-			if (other.familyIdInterested != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!familyIdInterested.equals(other.familyIdInterested))
+		} else if (!id.equals(other.id))
+			return false;
+		if (onlyInterested != other.onlyInterested)
 			return false;
 		return true;
 	}

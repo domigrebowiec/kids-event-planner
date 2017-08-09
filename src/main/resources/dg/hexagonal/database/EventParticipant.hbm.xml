@@ -13,8 +13,8 @@
       </id>
       <properties name="unique_eventparticipants_cols" unique="true"> 
 	      <property name="eventId" column="EVENT_ID" type="java.lang.Long"/>
-	      <property name="familyIdGo" column="FAMILY_ID_GO" type="java.lang.Long"/>
-	      <property name="familyIdInterested" column="FAMILY_ID_INTERESTED" type="java.lang.Long"/>		  
+	      <property name="familyId" column="FAMILY_ID" type="java.lang.Long"/>
+	      <property name="onlyInterested" column="ONLY_INTERESTED" type="boolean"/>		  
  	  </properties>
    </class>
 </hibernate-mapping>
