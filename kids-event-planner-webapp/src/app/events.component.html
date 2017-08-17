@@ -1,6 +1,12 @@
 <h2>Events</h2>
 <ul>
-  <li *ngFor="let event of events">
+  <li *ngFor="let event of events" (click)="onSelect(event)">
       Event {{event.name}}, place: {{event.place.name}}
   </li>
 </ul>
+<div *ngIf="selectedEvent">
+    <h3>Selected event:</h3> {{selectedEvent.name}}
+</div>
+<div *ngIf="!selectedEvent">
+    <h3>No selected event.</h3>
+</div>
