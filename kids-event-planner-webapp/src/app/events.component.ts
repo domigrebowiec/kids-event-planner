@@ -14,8 +14,13 @@ const EVENTS: Event[] = [
 })
 export class EventsComponent implements OnInit {
     events: Event[];
+    selectedEvent: Event;
     
     ngOnInit(): void {
         this.events = EVENTS;
+    }
+
+    onSelect(event: Event): void {
+        this.selectedEvent = event;
     }
 }
