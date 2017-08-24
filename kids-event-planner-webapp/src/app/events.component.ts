@@ -10,7 +10,8 @@ const EVENTS: Event[] = [
 
 @Component({
     selector: 'my-events',
-    templateUrl: './events.component.html'
+    templateUrl: './events.component.html',
+    styleUrls: [ './events.component.css' ]
 })
 export class EventsComponent implements OnInit {
     events: Event[];

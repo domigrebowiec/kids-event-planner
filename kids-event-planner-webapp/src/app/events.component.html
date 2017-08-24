@@ -1,7 +1,8 @@
 <h2>Events</h2>
-<ul>
+<ul class="events">
   <li *ngFor="let event of events" (click)="onSelect(event)">
-      Event {{event.name}}, place: {{event.place.name}}
+      <span>Event {{event.name}}, place: {{event.place.name}}</span>
+      <span *ngIf="selectedEvent == event"><br/>{{selectedEvent.name}}</span>
   </li>
 </ul>
 <div *ngIf="selectedEvent">
