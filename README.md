@@ -24,6 +24,10 @@ Basic domain consist of:
 - Family can mark that is interested in going to event
 - Sending notifications (f.e. email notifications)
 
+## Implementation
+ - Java, SQLite
+ - Angular
+ 
 ## Resources
 - [Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture)
 - [How to code - tutorial](http://java-design-patterns.com/blog/build-maintainable-systems-with-hexagonal-architecture/)
